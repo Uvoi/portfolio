@@ -192,9 +192,46 @@ const projectCatalog = [
     },
   },
   {
-    id: 'medical-organization',
+    id: 'food-cafe',
     placement: 'featured',
     order: 50,
+    accent: '#EB9B0B',
+    layout: 'editorial',
+    content: {
+      ru: {
+        title: 'Сайт для кафе',
+        description:
+          'Cайт для кафе в городе Ржев.',
+        contribution:
+          'Сайт был разработан в одиночку на React и TypeScript + Python и Fastapi',
+        contributionPoints: [
+          'Реализовал всю frontend-часть и backend-часть сайта.',
+          'Разработал админ панель для удобного управления сайтом и заказами.',
+        ],
+        role: 'Fullstack Developer',
+        projectTypes: ['Коммерческий заказ', 'E-commerce', 'Fullstack'],
+        technologies: ['React', 'TypeScript', 'Python', 'Fastapi'],
+      },
+      en: {
+        title: 'Website for a café',
+        description:
+          'Website for a café in Rzhev.',
+        contribution:
+          'The website was developed by me alone using React, TypeScript, Python, and FastAPI.',
+        contributionPoints: [
+          'Developed both the front-end and back-end parts of the website.',
+          'Developed an admin panel for easy management of the website and orders.',
+        ],
+        role: 'Fullstack Developer',
+        projectTypes: ['Commercial project', 'E-commerce', 'Fullstack'],
+        technologies: ['React', 'TypeScript', 'Python', 'Fastapi'],
+      },
+    },
+  },
+  {
+    id: 'medical-organization',
+    placement: 'featured',
+    order: 60,
     accent: '#0DB02B',
     layout: 'editorial',
     content: {
@@ -237,7 +274,7 @@ const projectCatalog = [
   {
     id: 'admin-platform',
     placement: 'featured',
-    order: 60,
+    order: 70,
     accent: '#494949',
     layout: 'dashboard',
     private: true,
@@ -281,7 +318,7 @@ const projectCatalog = [
   {
     id: 'lighting-control',
     placement: 'additional',
-    order: 70,
+    order: 80,
     accent: '#FF6B33',
     layout: 'mobile',
     content: {
@@ -322,7 +359,7 @@ const projectCatalog = [
   {
     id: 'passgen',
     placement: 'additional',
-    order: 80,
+    order: 90,
     accent: '#C9FF2F',
     layout: 'dashboard',
     content: {
@@ -358,7 +395,7 @@ const projectCatalog = [
   {
     id: 'passman',
     placement: 'additional',
-    order: 90,
+    order: 100,
     accent: '#3458F5',
     layout: 'editorial',
     content: {
