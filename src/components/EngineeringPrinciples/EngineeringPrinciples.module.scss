@@ -1,0 +1,135 @@
+@use '../../theme' as *;
+
+.wrapper {
+  margin-top: 88px;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+
+  span {
+    color: $acid;
+    font:
+      11px/1 ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      monospace;
+  }
+
+  p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.card {
+  min-width: 0;
+  padding: 28px 24px 8px;
+  border-right: 1px solid rgba(255, 255, 255, 0.14);
+
+  &:first-child {
+    padding-left: 0;
+  }
+  &:last-child {
+    padding-right: 0;
+    border-right: 0;
+  }
+
+  h3 {
+    margin: 36px 0 12px;
+    font: 500 18px/1.1 'Manrope';
+  }
+
+  > p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  svg {
+    width: 22px;
+    color: $acid;
+  }
+  span {
+    color: rgba(255, 255, 255, 0.28);
+    font:
+      10px/1 ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      monospace;
+  }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .card {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    &:nth-child(2) {
+      border-right: 0;
+    }
+    &:nth-child(3) {
+      padding-left: 0;
+      border-bottom: 0;
+    }
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .wrapper {
+    margin-top: 65px;
+    padding: 20px;
+  }
+  .heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .card,
+  .card:first-child,
+  .card:nth-child(3),
+  .card:last-child {
+    padding: 24px 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  .card:last-child {
+    border-bottom: 0;
+    padding-bottom: 4px;
+  }
+  .card h3 {
+    margin-top: 22px;
+  }
+}

@@ -1,0 +1,293 @@
+@use '../../theme' as *;
+
+.backdrop {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(9, 9, 12, 0.72);
+  backdrop-filter: blur(12px);
+  animation: backdropIn 0.2s ease-out;
+}
+
+.modal {
+  width: min(960px, 100%);
+  max-height: min(860px, calc(100dvh - 48px));
+  overflow: auto;
+  background: $paper;
+  box-shadow: 0 35px 120px rgba(0, 0, 0, 0.38);
+  animation: modalIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.header {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  min-height: 80px;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid $line;
+  background: rgba(243, 240, 232, 0.94);
+  backdrop-filter: blur(16px);
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  span,
+  p {
+    margin: 0;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: $muted;
+  }
+
+  button {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    border: 1px solid $line;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      background: $ink;
+      color: $paper;
+      transform: rotate(6deg);
+    }
+
+    svg {
+      width: 20px;
+    }
+  }
+}
+
+.content {
+  padding: clamp(30px, 6vw, 72px);
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(35px, 7vw, 90px);
+  align-items: end;
+  padding-bottom: 60px;
+
+  h2 {
+    margin: 0;
+    font: 500 clamp(46px, 7vw, 88px)/0.94 'Manrope';
+    letter-spacing: -0.075em;
+  }
+
+  p {
+    margin: 0;
+    color: $muted;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 60px;
+
+  figure {
+    min-height: 220px;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: #dedad0;
+
+    &:first-child:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  img {
+    width: 100%;
+    max-height: 520px;
+    display: block;
+    object-fit: contain;
+  }
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  padding: 32px 0;
+  border-top: 1px solid $line;
+  border-bottom: 1px solid $line;
+}
+
+.label {
+  display: block;
+  margin-bottom: 16px;
+  color: $muted;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.typeTags,
+.technologyTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  span {
+    padding: 8px 11px;
+    border-radius: 30px;
+    font-size: 11px;
+  }
+}
+
+.typeTags span {
+  border: 1px solid $line;
+}
+
+.technologyTags span {
+  background: $ink;
+  color: $paper;
+}
+
+.contribution {
+  padding: 50px 0;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+    padding: 18px 20px 18px 42px;
+    border-top: 1px solid $line;
+    font-size: 15px;
+    line-height: 1.5;
+
+    &:last-child {
+      border-bottom: 1px solid $line;
+    }
+
+    &::before {
+      content: '✓';
+      position: absolute;
+      left: 10px;
+      color: $blue;
+      font-weight: 600;
+    }
+  }
+}
+
+.note {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 30px;
+  background: #e5e1d8;
+
+  span {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0;
+    color: $muted;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+}
+
+@keyframes backdropIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+}
+
+@media (max-width: 700px) {
+  .backdrop {
+    padding: 0;
+    place-items: end center;
+  }
+
+  .modal {
+    max-height: 94dvh;
+    border-radius: 18px 18px 0 0;
+  }
+
+  .header {
+    min-height: 70px;
+    padding: 13px 18px;
+
+    > div {
+      display: block;
+    }
+
+    p {
+      margin-top: 4px;
+      font-size: 9px;
+    }
+  }
+
+  .content {
+    padding: 34px 20px 45px;
+  }
+
+  .intro,
+  .meta {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    margin-bottom: 40px;
+
+    figure:first-child:last-child {
+      grid-column: auto;
+    }
+  }
+
+  .intro {
+    gap: 24px;
+    padding-bottom: 40px;
+  }
+
+  .meta {
+    gap: 30px;
+  }
+
+  .note {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}

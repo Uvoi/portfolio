@@ -1,0 +1,73 @@
+@use '../../theme' as *;
+.section {
+  padding: 145px $gutter;
+  background: $ink;
+  color: #f7f4ec;
+}
+.service {
+  display: grid;
+  grid-template-columns: 90px 1fr 1fr auto;
+  align-items: center;
+  gap: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 34px 0;
+  transition:
+    padding 0.25s,
+    color 0.25s;
+  > span {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 12px;
+  }
+  h3 {
+    margin: 0;
+    font: 500 clamp(25px, 3vw, 40px) 'Manrope';
+    letter-spacing: -0.04em;
+  }
+  p {
+    color: rgba(255, 255, 255, 0.58);
+    max-width: 470px;
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0;
+  }
+  > svg {
+    width: 26px;
+  }
+  &:hover {
+    padding-left: 12px;
+    color: $acid;
+  }
+  &:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+@media (max-width: 1100px) {
+  .section {
+    padding-top: 110px;
+    padding-bottom: 110px;
+  }
+}
+@media (max-width: 800px) {
+  .section {
+    padding-top: 95px;
+    padding-bottom: 95px;
+  }
+  .service {
+    grid-template-columns: 44px 1fr auto;
+    p {
+      display: none;
+    }
+  }
+}
+@media (max-width: 520px) {
+  .section {
+    padding: 95px 18px;
+  }
+  .service {
+    grid-template-columns: 35px 1fr auto;
+    padding: 27px 0;
+    h3 {
+      font-size: 23px;
+    }
+  }
+}

@@ -1,0 +1,203 @@
+@use '../../theme' as *;
+.hero {
+  padding: 76px $gutter 90px;
+  color: #f7f4ec;
+  background: #090913;
+  h1 {
+    font: 500 clamp(57px, 8.3vw, 130px)/0.93 'Manrope';
+    letter-spacing: -0.075em;
+    margin: 55px 0 45px;
+    em {
+      font-family: Georgia, serif;
+      font-weight: 400;
+    }
+    span {
+      color: $acid;
+    }
+  }
+}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.68);
+  svg {
+    width: 17px;
+  }
+}
+.bottom {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  padding-left: 51%;
+  margin-bottom: 48px;
+  p {
+    max-width: 470px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 17px;
+    line-height: 1.55;
+  }
+}
+.circleLink {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: 0.25s;
+  svg {
+    width: 28px;
+  }
+  &:hover {
+    border-color: $acid;
+    background: $acid;
+    color: $ink;
+    transform: translateY(4px);
+  }
+}
+.visual {
+  height: min(48vw, 650px);
+  min-height: 360px;
+  background: radial-gradient(circle at 50% 50%, rgba(72, 58, 145, 0.22), transparent 45%), #090913;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  > span,
+  > small {
+    position: absolute;
+    z-index: 4;
+    bottom: 24px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  > span {
+    left: 25px;
+  }
+  > small {
+    right: 25px;
+  }
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    inset 20px 20px 60px rgba(255, 255, 255, 0.16),
+    inset -30px -30px 80px rgba(20, 11, 72, 0.5),
+    0 40px 100px rgba(44, 35, 255, 0.24);
+  backdrop-filter: blur(18px);
+  animation: drift 10s ease-in-out infinite alternate;
+}
+.orbOne {
+  width: 44vw;
+  height: 44vw;
+  left: 10%;
+  top: -45%;
+  background: radial-gradient(circle at 30% 25%, #d9d5ff, #745cff 35%, #301489 68%, #100b28);
+  transform: rotate(-20deg);
+}
+.orbTwo {
+  width: 43vw;
+  height: 43vw;
+  right: 4%;
+  bottom: -42%;
+  background: radial-gradient(circle at 32% 28%, #b9e4ff, #2563eb 38%, #6016a8 70%, #170b32);
+  animation-delay: -4s;
+}
+.noise {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.45;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+.monogram {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font: 500 clamp(80px, 18vw, 280px)/1 'Manrope';
+  letter-spacing: -0.11em;
+  color: rgba(255, 255, 255, 0.09);
+  transform: translateX(-0.05em);
+}
+@keyframes drift {
+  to {
+    transform: translate(3%, 4%) rotate(8deg) scale(1.04);
+  }
+}
+@media (max-width: 800px) {
+  .hero {
+    padding-top: 50px;
+    h1 {
+      margin: 38px 0;
+      font-size: clamp(49px, 14vw, 78px);
+    }
+  }
+  .bottom {
+    padding-left: 0;
+    align-items: center;
+    p {
+      max-width: 75%;
+      font-size: 15px;
+    }
+  }
+  .visual {
+    height: 62vw;
+    min-height: 310px;
+  }
+  .orbOne {
+    width: 70vw;
+    height: 70vw;
+    top: -30%;
+  }
+  .orbTwo {
+    width: 65vw;
+    height: 65vw;
+    bottom: -35%;
+  }
+}
+@media (max-width: 520px) {
+  .hero {
+    padding-left: 18px;
+    padding-right: 18px;
+    h1 {
+      font-size: clamp(45px, 13.8vw, 68px);
+    }
+  }
+  .bottom {
+    align-items: flex-end;
+    p {
+      max-width: calc(100% - 72px);
+    }
+  }
+  .circleLink {
+    width: 54px;
+    height: 54px;
+  }
+  .visual {
+    min-height: 420px;
+    margin-left: -18px;
+    margin-right: -18px;
+    > span {
+      left: 16px;
+      bottom: 16px;
+    }
+    > small {
+      right: 16px;
+      bottom: 16px;
+    }
+  }
+}

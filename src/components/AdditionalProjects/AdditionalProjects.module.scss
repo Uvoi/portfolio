@@ -1,0 +1,140 @@
+@use '../../theme' as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 38px;
+  animation: reveal 0.35s ease-out;
+}
+
+.card {
+  min-width: 0;
+
+  > button {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 1px solid $line;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    transition:
+      transform 0.25s,
+      box-shadow 0.25s;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(17, 18, 15, 0.1);
+
+      .titleRow svg {
+        transform: translate(3px, -3px);
+      }
+    }
+  }
+}
+
+.visual {
+  height: 210px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: $ink;
+  color: $paper;
+
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+
+  > span {
+    font: 500 72px/1 'Manrope';
+    color: rgba(255, 255, 255, 0.14);
+  }
+}
+
+.content {
+  padding: 22px;
+
+  > p {
+    min-height: 4.5em;
+    margin: 16px 0 22px;
+    color: $muted;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+.role {
+  color: $muted;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.titleRow {
+  margin-top: 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+
+  h3 {
+    margin: 0;
+    font: 500 25px/1.05 'Manrope';
+    letter-spacing: -0.045em;
+  }
+
+  svg {
+    width: 19px;
+    flex: 0 0 auto;
+    transition: transform 0.2s;
+  }
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  span {
+    padding: 6px 8px;
+    border-radius: 20px;
+    background: rgba(17, 18, 15, 0.07);
+    font:
+      9px/1 ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      monospace;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@media (max-width: 850px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visual {
+    height: 190px;
+  }
+
+  .content > p {
+    min-height: auto;
+  }
+}
